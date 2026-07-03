@@ -13,6 +13,14 @@ Next.js 14 frontend for [InvoFi](https://invofi-five.vercel.app) — a decentral
 
 ---
 
+## This repo vs. the main repo
+
+This is where **frontend contributions happen** — fork it, open a PR here for anything touching the Next.js app. It has its own CI and issue queue, scoped to just the frontend.
+
+Production runs out of **[Stellar-VaultLink/invofi](https://github.com/Stellar-VaultLink/invofi)**, the integration monorepo that combines this frontend with [invofi-contracts](https://github.com/Stellar-VaultLink/invofi-contracts) and is what Vercel actually deploys from. Merged PRs here get pulled into that repo periodically. If you're looking for the full project (roadmap, deployed demo, both stacks together), start there instead.
+
+---
+
 ## What it does
 
 - Businesses register invoices on-chain and receive financing offers from investors
@@ -80,14 +88,20 @@ src/
 │   ├── dashboard/    # Business invoice dashboard
 │   ├── invoices/     # Invoice create and detail pages
 │   ├── marketplace/  # Lender marketplace
-│   └── portfolio/    # Lender investment tracker
+│   ├── portfolio/    # Lender investment tracker
+│   ├── settings/     # Account settings page
+│   ├── error.tsx     # Global error boundary
+│   ├── loading.tsx   # Global loading state
+│   └── not-found.tsx # Custom 404 page
 ├── components/
 │   ├── auth/         # AuthGuard, WalletButton, WalletProvider
+│   ├── common/       # EmptyState, LoadingSkeleton, PageHeader, StatusBadge
 │   ├── invoices/     # InvoiceCard, InvoiceForm, OfferList
-│   ├── layout/       # Navbar, Providers
+│   ├── layout/       # Navbar, Footer, Providers
 │   ├── marketplace/  # MarketplaceCard
 │   └── ui/           # shadcn/ui base components
-├── lib/              # Supabase, Freighter, Horizon, contract helpers
+├── hooks/            # useInvoices, useOffers, useMarketplace, useDebounce, useLocalStorage, useMediaQuery
+├── lib/              # Supabase, Freighter, Horizon, contract helpers, constants, formatters
 ├── types/            # Shared TypeScript types
 └── utils/            # Supabase SSR utilities
 ```
