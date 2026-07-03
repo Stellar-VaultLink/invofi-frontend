@@ -25,9 +25,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: lint-and-typecheck
     env:
-      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
-      NEXT_PUBLIC_CONTRACT_ID: placeholder
+      # Placeholder values — CI only needs the build to succeed, not to talk to
+      # a real Supabase project or contract. Real secrets live in Vercel.
+      NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: placeholder-anon-key
+      NEXT_PUBLIC_CONTRACT_ID: CDJS6AFE6VRPAPWOPWOPZLSLQ7NCISA7YHOMAE7HJWOD7G6CQDCVT4L2
       NEXT_PUBLIC_STELLAR_NETWORK: testnet
       NEXT_PUBLIC_RPC_URL: https://soroban-testnet.stellar.org
       NEXT_PUBLIC_HORIZON_URL: https://horizon-testnet.stellar.org
