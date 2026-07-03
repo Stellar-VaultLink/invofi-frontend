@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Store,
   Briefcase,
+  Settings,
   LogOut,
   Sun,
   Moon,
@@ -28,9 +29,9 @@ export function Navbar() {
   const router = useRouter();
 
   const [theme, setTheme] = useLocalStorage<'light' | 'dark'>(
-  'theme',
-  'light'
-);
+    'theme',
+    'light'
+  );
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -92,6 +93,17 @@ export function Navbar() {
           </button>
 
           <WalletButton />
+
+          <Link
+            href="/settings"
+            className={cn(
+              'hidden md:flex items-center text-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white transition-colors',
+              pathname.startsWith('/settings') && 'text-blue-700'
+            )}
+            title="Settings"
+          >
+            <Settings className="h-4 w-4" />
+          </Link>
 
           <button
             onClick={handleSignOut}
