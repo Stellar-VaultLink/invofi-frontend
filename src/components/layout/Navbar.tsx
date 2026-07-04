@@ -11,7 +11,7 @@ import {
   Sun,
   Moon,
 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 import { WalletButton } from '@/components/auth/WalletButton';
@@ -28,18 +28,26 @@ export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const [mounted, setMounted] = useState(false);
+
   const [theme, setTheme] = useLocalStorage<'light' | 'dark'>(
     'theme',
     'light'
   );
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -50,16 +58,21 @@ export function Navbar() {
     router.push('/');
   };
 
+  if (!mounted) return null;
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white/80 dark:bg-gray-900 dark:border-gray-800 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
       <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-bold text-lg"
+        >
           <span className="text-blue-600">Invo</span>
-          <span className="text-gray-900 dark:text-white">Fi</span>
+          <span className="text-foreground">Fi</span>
         </Link>
 
-        {/* Nav links */}
+        {/* Navigation */}
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
             <Link
@@ -69,7 +82,7 @@ export function Navbar() {
                 'flex items-center gap-1.5 px-3 py-2 rounded-md text-sm transition-colors',
                 pathname.startsWith(link.href)
                   ? 'bg-blue-50 text-blue-700 dark:bg-gray-800 dark:text-blue-400 font-medium'
-                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
               )}
             >
               <link.icon className="h-4 w-4" />
@@ -82,7 +95,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-md text-muted-foreground hover:bg-accent transition-colors"
             title="Toggle theme"
           >
             {theme === 'light' ? (
@@ -97,8 +110,9 @@ export function Navbar() {
           <Link
             href="/settings"
             className={cn(
-              'hidden md:flex items-center text-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white transition-colors',
-              pathname.startsWith('/settings') && 'text-blue-700'
+              'hidden md:flex items-center text-muted-foreground hover:text-foreground transition-colors',
+              pathname.startsWith('/settings') &&
+                'text-blue-700 dark:text-blue-400'
             )}
             title="Settings"
           >
@@ -107,7 +121,7 @@ export function Navbar() {
 
           <button
             onClick={handleSignOut}
-            className="hidden md:flex items-center gap-1.5 text-sm text-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white transition-colors"
+            className="hidden md:flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
             title="Sign out"
           >
             <LogOut className="h-4 w-4" />
