@@ -94,7 +94,7 @@ export function InvoiceTable({ invoices, onRowClick }: InvoiceTableProps) {
               onClick={() => onRowClick?.(inv)}
             >
               <TableCell className="font-mono text-xs">{inv.id.toString().slice(0, 12)}&hellip;</TableCell>
-              <TableCell className="font-mono text-xs">{formatWalletAddress(inv.debtor)}</TableCell>
+              <TableCell className="font-mono text-xs">{formatWalletAddress(inv.originator)}</TableCell>
               <TableCell>{formatAmount(Number(inv.amount), inv.currency ?? 'XLM')}</TableCell>
               <TableCell>{formatDate(Number(inv.due_date))}</TableCell>
               <TableCell><StatusBadge status={inv.status} /></TableCell>
