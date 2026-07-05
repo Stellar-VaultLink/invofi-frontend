@@ -40,7 +40,7 @@ export function InvoiceTable({ invoices, onRowClick }: InvoiceTableProps) {
     if (sortField === 'amount') cmp = Number(a.amount) - Number(b.amount);
     else if (sortField === 'due_date') cmp = Number(a.due_date) - Number(b.due_date);
     else if (sortField === 'status') cmp = a.status.localeCompare(b.status);
-    else cmp = Number((a as Record<string, unknown>).created_at ?? 0) - Number((b as Record<string, unknown>).created_at ?? 0);
+    else cmp = Number((a as unknown as Record<string, unknown>).created_at ?? 0) - Number((b as unknown as Record<string, unknown>).created_at ?? 0);
     return sortDir === 'asc' ? cmp : -cmp;
   });
 
