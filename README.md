@@ -55,7 +55,7 @@ Merged PRs in the component repos are periodically pulled into this monorepo (vi
 ## Live Demo
 
 > **Frontend:** [invofi-five.vercel.app](https://invofi-five.vercel.app)
-> **Contract on Stellar Testnet:** [`CANAIGL4F4ZUXVTLYE2DJVV2CLY6PONZ7WAZP4A2UANN6AVA3Z4BQVK2`](https://stellar.expert/explorer/testnet/contract/CANAIGL4F4ZUXVTLYE2DJVV2CLY6PONZ7WAZP4A2UANN6AVA3Z4BQVK2)
+> **Contract on Stellar Testnet:** [`CDS3WO5K6GUBGCLMRUR4IQYLDT5SNDOMUMZFDXOMXYP6EELLTM5MMALH`](https://stellar.expert/explorer/testnet/contract/CDS3WO5K6GUBGCLMRUR4IQYLDT5SNDOMUMZFDXOMXYP6EELLTM5MMALH)
 
 ```bash
 git clone https://github.com/Stellar-VaultLink/invofi.git
