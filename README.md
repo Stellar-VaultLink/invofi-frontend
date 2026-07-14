@@ -44,8 +44,8 @@ InvoFi's code lives across three repos with distinct jobs:
 
 | Repo | Role |
 |---|---|
-| **[invofi](https://github.com/Stellar-VaultLink/invofi)** (this repo) | Integration monorepo. Vercel deploys the frontend straight out of `invofi/apps/frontend`. Full history, issue backlog, and roadmap live here. |
-| **[invofi-frontend](https://github.com/Stellar-VaultLink/invofi-frontend)** | Where frontend contributions happen — UI, hooks, client-side work. Scoped CI, its own issue queue. |
+| **[invofi](https://github.com/Stellar-VaultLink/invofi)** | Integration monorepo. Vercel deploys the frontend straight out of `invofi/apps/frontend`. Full history, issue backlog, and roadmap live here. |
+| **[invofi-frontend](https://github.com/Stellar-VaultLink/invofi-frontend)** (this repo) | Where frontend contributions happen — UI, hooks, client-side work. Scoped CI, its own issue queue. |
 | **[invofi-contracts](https://github.com/Stellar-VaultLink/invofi-contracts)** | Where contract contributions happen — Soroban/Rust. Scoped CI, its own issue queue. |
 
 Merged PRs in the component repos are periodically pulled into this monorepo (via `scripts/sync-subtrees.sh`) and deployed from here.
@@ -55,7 +55,7 @@ Merged PRs in the component repos are periodically pulled into this monorepo (vi
 ## Live Demo
 
 > **Frontend:** [invofi-five.vercel.app](https://invofi-five.vercel.app)
-> **Contract on Stellar Testnet:** [`CDJS6AFE6VRPAPWOPWOPZLSLQ7NCISA7YHOMAE7HJWOD7G6CQDCVT4L2`](https://lab.stellar.org/r/testnet/contract/CDJS6AFE6VRPAPWOPWOPZLSLQ7NCISA7YHOMAE7HJWOD7G6CQDCVT4L2)
+> **Contract on Stellar Testnet:** [`CANAIGL4F4ZUXVTLYE2DJVV2CLY6PONZ7WAZP4A2UANN6AVA3Z4BQVK2`](https://stellar.expert/explorer/testnet/contract/CANAIGL4F4ZUXVTLYE2DJVV2CLY6PONZ7WAZP4A2UANN6AVA3Z4BQVK2)
 
 ```bash
 git clone https://github.com/Stellar-VaultLink/invofi.git
